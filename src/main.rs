@@ -1,6 +1,7 @@
 fn main() {
     enums();
-    enums_with_data()
+    enums_with_data();
+    manage_user();
 }
 
 fn enums() {
@@ -55,18 +56,40 @@ impl Shape {
 }
 
 fn enums_with_data() {
-    let circle = Shape::Circle(20.00);
-    println!("The area of your circle is {}", circle.print_shape_area());
+    let shape = Shape::Circle(20.00);
+    println!("The area of your circle is {}", shape.print_shape_area());
 
-    let rectangle = Shape::Rectangle(20.00, 10.00);
-    println!(
-        "The area of your rectangle is {}",
-        rectangle.print_shape_area()
-    );
+    let shape = Shape::Rectangle(20.00, 10.00);
+    println!("The area of your rectangle is {}", shape.print_shape_area());
 
-    let triangle = Shape::Triangle(20.00, 10.00, 10.00);
-    println!(
-        "The area of your triangle is {}",
-        triangle.print_shape_area()
-    )
+    let shape = Shape::Triangle(20.00, 10.00, 10.00);
+    println!("The area of your triangle is {}", shape.print_shape_area())
+}
+
+// Classes (haha - structs really)
+
+struct User {
+    name: String,
+    age: u8,
+}
+
+impl User {
+    fn new(name: &str, age: u8) -> Self {
+        Self {
+            name: name.to_string(),
+            age,
+        }
+    }
+
+    fn greet(&self) -> String {
+        format!(
+            "Hello, my name is {} and I am {} years old.",
+            self.name, self.age
+        )
+    }
+}
+
+fn manage_user() {
+    let user = User::new("Johnpaul", 30);
+    println!("{}", user.greet());
 }
