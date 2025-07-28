@@ -87,9 +87,22 @@ impl User {
             self.name, self.age
         )
     }
+
+    fn have_birthday(&mut self) {
+        self.age += 1;
+        println!(
+            "Happy birthday, {}! You are now {} years old.",
+            self.name, self.age
+        );
+    }
 }
 
 fn manage_user() {
     let user = User::new("Johnpaul", 30);
     println!("{}", user.greet());
+
+    let mut birthday_user = User::new("Johnpaul", 30);
+    birthday_user.have_birthday();
+
+    println!("{}", birthday_user.greet());
 }
